@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字変換！！！</title>
+</head>
+<body>
+    <h1>音声ファイル文字変換アプリケーション</h1>
+    <p>音声ファイルをアップロードするか、録音ボタンを教えてください。</p>
+    <form action="/recoded" method="POST">
+        <label>録音時間(秒)を入力してください:</label>
+        <input type="number" name="time" min="2" max="20">
+        <button type="submit">録音開始</button>
+    </form>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button>upload</button>
+    </form>
+    <br>
+    <form action="/change" method="POST">
+        <button type="submit">変換開始</button>    
+    </form>
+    <hr>
+    <p>{{msg}}
+    <h4>変換結果</h4>
+    <p>{{voice_text}}</p>
+</body>
+</html>
