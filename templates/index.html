@@ -2,24 +2,46 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 2.5%;
+            background-color: rgb(214, 255, 209);
+        }
+    </style>
     <title>文字変換！！！</title>
 </head>
 <body>
     <h1>音声ファイル文字変換アプリケーション</h1>
     <p>音声ファイルをアップロードするか、録音ボタンを教えてください。</p>
-    <form action="/recoded" method="POST">
-        <label>録音時間(秒)を入力してください:</label>
-        <input type="number" name="time" min="2" max="20">
-        <button type="submit">録音開始</button>
+    <form action="/recoded" method="POST" class="row g-4">
+        <div class="col-auto">
+            <label class="col-form-label">録音時間(秒)を入力してください:</label>            
+        </div>
+        <div class="col-auto">
+            <input class="form-control" type="number" name="time" min="2" max="20" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">録音開始</button>
+        </div>
+        
     </form>
-    <form method="post" action="/upload" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button>upload</button>
+    <form method="post" action="/upload" enctype="multipart/form-data" class="row g-4">
+        <div class="col-auto">
+            <label class="col-form-label">wavファイルを選択してください:</label>            
+        </div>
+        <br>
+        <div class="col-auto">
+            <input class="form-control" type="file" name="file" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">アップロード</button>
+        </div>
     </form>
     <br>
     <form action="/change" method="POST">
-        <button type="submit">変換開始</button>    
+        <button type="submit" class="btn btn-danger mb-3">変換開始</button>    
     </form>
     <hr>
     <p>{{msg}}
